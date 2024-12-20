@@ -12,16 +12,16 @@ us_list = ["New York", "Chicago", "San Francisco", "Los Angeles", "San Diego"]
 country_list = [uk_list, india_list, us_list]
 
 for country in country_list:
-    image = Image.open("post.png")
+    image = Image.open("images/post.png")
     draw = ImageDraw.Draw(image)
 
-    font = ImageFont.truetype('Oswald-Regular.ttf', size=50)
+    font = ImageFont.truetype('fonts/Oswald-Regular.ttf', size=50)
     content = "Latest Weather Forecast"
     color = 'rgb(255, 255, 255)'
     (x, y) = (55,50)
     draw.text((x, y), content, color, font=font)
 
-    font = ImageFont.truetype('Oswald-Regular.ttf', size=30)
+    font = ImageFont.truetype('fonts/Oswald-Regular.ttf', size=30)
     content = date.today().strftime("%A - %B %d, %Y")
     color = 'rgb(255, 255, 255)'
     (x, y) = (55,145)
@@ -33,18 +33,18 @@ for country in country_list:
         response = requests.get(url)
         data = json.loads(response.text)
 
-        font = ImageFont.truetype('Oswald-Regular.ttf', size=50)
+        font = ImageFont.truetype('fonts/Oswald-Regular.ttf', size=50)
         color = 'rgb(0, 0, 0)'
         (x, y) = (135, position[index])
         draw.text((x, y), city, color, font=font)
 
-        font = ImageFont.truetype('Oswald-Regular.ttf', size=50)
+        font = ImageFont.truetype('fonts/Oswald-Regular.ttf', size=50)
         content = str(data['main']['temp']) + "\u00b0"
         color = 'rgb(255, 255, 255)'
         (x, y) = (600, position[index])
         draw.text((x, y), content, color, font=font)
 
-        font = ImageFont.truetype('Oswald-Regular.ttf', size=50)
+        font = ImageFont.truetype('fonts/Oswald-Regular.ttf', size=50)
         content = str(data['main']['humidity']) + "%"
         color = 'rgb(255, 255, 255)'
         (x, y) = (810, position[index])
